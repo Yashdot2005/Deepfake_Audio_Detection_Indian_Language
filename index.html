@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepFake Audio Detector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <h1 class="logo">DeepFake Detector</h1>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#detection">Detect</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#team">Team</a></li>
+        </ul>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="section home">
+        <div class="content">
+            <div class="text">
+                <h1>DeepFake Audio Detector</h1>
+                <p>Identify fake or AI-generated voices quickly and accurately.</p>
+                <button id="detectBtn">Start Detection</button>
+            </div>
+            <div class="image">
+                <img src="{{ url_for('static', filename='images/images1.png') }}" alt="AI Audio Detector">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <h2>About the Project</h2>
+        <div class="features">
+            <div class="card">⚡ Real-Time Analysis</div>
+            <div class="card">🧠 RNN-Based Model</div>
+            <div class="card">🌐 Indian Language Support</div>
+        </div>
+    </section>
+
+    <!-- Detection Section -->
+    <section id="detection" class="section detection">
+        <h2>Upload Your Audio</h2>
+        <div class="drop-area" id="dropArea">
+            <p>🎵 Drag & Drop your audio file here or click to upload</p>
+            <input type="file" id="fileInput" accept=".mp3,.wav" hidden>
+        </div>
+        <div id="uploadStatus"></div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="section blog">
+        <h2>AI & Voice Insights</h2>
+        <div class="blog-container">
+            <div class="blog-card">
+                <img src="{{ url_for('static', filename='images/Blog1.png') }}" alt="Hindi Deepfake Dataset">
+                <h3>Hindi Audio-Video Deepfake Dataset (HAV-DF)</h3>
+                <p>This blog features a pioneering Hindi language deepfake dataset.</p>
+                <a href="https://www.themoonlight.io/en/review/hindi-audio-video-deepfake-hav-df-a-hindi-language-based-audio-video-deepfake-dataset" target="_blank">Read More</a>
+            </div>
+            <div class="blog-card">
+                <img src="{{ url_for('static', filename='images/Blog2.png') }}" alt="Tattle open source">
+                <h3>Open-Source Deepfake Detection Platform</h3>
+                <p>Explore this open-source tool supporting 18 models.</p>
+                <a href="https://tattle.co.in/blog/2025-03-12-deepfake-o-meter/" target="_blank">Read More</a>
+            </div>
+            <div class="blog-card">
+                <img src="{{ url_for('static', filename='images/Blog3.png') }}" alt="Chrome plugin">
+                <h3>Build an AI Deepfake Detector</h3>
+                <p>Hands-on tutorial for Chrome extension UI.</p>
+                <a href="https://dev.to/aurigin/tutorial-building-an-ai-deepfake-detector-chrome-plugin-4p06" target="_blank">Read More</a>
+            </div>
+            <div class="blog-card">
+                <img src="{{ url_for('static', filename='images/Blog4.png') }}" alt="Vastav AI Marathi">
+                <h3>वास्तव AI Detection Tool</h3>
+                <p>Government-backed tool for deepfake detection.</p>
+                <a href="https://www.topnewsmarathi.com/technology/deepfake-detection-tool-do-you-know-about-this-indian-fake-image-detection-tool/" target="_blank">Read More</a>
+            </div>
+            <div class="blog-card">
+                <img src="{{ url_for('static', filename='images/Blog5.png') }}" alt="Supriya Sule deepfake">
+                <h3>Real-Life Deepfake Audio Case</h3>
+                <p>A case study involving manipulated political audio.</p>
+                <a href="https://dau.mcaindia.in/blog/a-i-voice-used-to-create-fake-bitcoin-audio-of-supriya-sule" target="_blank">Read More</a>
+            </div>
+            <div class="blog-card">
+                <img src="{{ url_for('static', filename='images/Blog6.png') }}" alt="Deep learning">
+                <h3>Audio Deepfake Detection Using Deep Learning</h3>
+                <p>Discusses architectures for deepfake detection.</p>
+                <a href="https://www.amrita.edu/publication/audio-deepfake-detection-using-deep-learning/" target="_blank">Read More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team -->
+    <section id="team" class="section team">
+        <h2>Our Team</h2>
+        <div class="team-container">
+            <div class="member"><img src="{{ url_for('static', filename='images/Sarang.jpg') }}"><h3>Sarang Channe</h3></div>
+            <div class="member"><img src="{{ url_for('static', filename='images/Dikshant.jpg') }}"><h3>Dikshant Fulzele</h3></div>
+            <div class="member"><img src="{{ url_for('static', filename='images/yasha.jpg') }}"><h3>Yash Ghotekar</h3></div>
+            <div class="member"><img src="{{ url_for('static', filename='images/Vinit.jpg') }}"><h3>Vinit Guglot</h3></div>
+            <div class="member"><img src="{{ url_for('static', filename='images/Gaurav.jpg') }}"><h3>Gaurav Khumbhare</h3></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="pro-footer">
+        <p>© 2025 DeepFake Detector | Mini Project by Group 13</p>
+        <p>Department of CSE, RCERT Chandrapur</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        const dropArea = document.getElementById('dropArea');
+        const fileInput = document.getElementById('fileInput');
+        const uploadStatus = document.getElementById('uploadStatus');
+        const detectBtn = document.getElementById('detectBtn');
+
+        detectBtn.disabled = true;
+        uploadStatus.innerHTML = '';
+
+        dropArea.addEventListener('click', () => fileInput.click());
+        dropArea.addEventListener('dragover', e => {
+            e.preventDefault();
+            dropArea.classList.add('active');
+        });
+        dropArea.addEventListener('dragleave', () => dropArea.classList.remove('active'));
+
+        const handleFile = (file) => {
+            if (file && (file.name.endsWith('.mp3') || file.name.endsWith('.wav'))) {
+                uploadStatus.innerHTML = `
+                    ✅ Audio clip <strong>${file.name}</strong> successfully added!
+                    Click 'Start Detection' below.
+                `;
+                detectBtn.disabled = false;
+            } else {
+                uploadStatus.innerHTML = `
+                    <span style="color: red;">❌ Invalid file format. Please upload .mp3 or .wav.</span>
+                `;
+                fileInput.value = '';
+                detectBtn.disabled = true;
+            }
+        };
+
+        dropArea.addEventListener('drop', e => {
+            e.preventDefault();
+            dropArea.classList.remove('active');
+            const file = e.dataTransfer.files[0];
+            handleFile(file);
+        });
+
+        fileInput.addEventListener('change', e => {
+            const file = e.target.files[0];
+            handleFile(file);
+        });
+
+        detectBtn.addEventListener('click', async () => {
+            const file = fileInput.files[0];
+            if (!file) {
+                uploadStatus.innerHTML = `<span style="color:red;">Please select an audio file first.</span>`;
+                return;
+            }
+
+            detectBtn.disabled = true;
+            detectBtn.textContent = 'Analyzing...';
+            uploadStatus.innerHTML = `🔬 Analyzing <strong>${file.name}</strong>... Please wait.`;
+
+            const formData = new FormData();
+            formData.append('audio_file', file);
+
+            try {
+                const response = await fetch('/detect', { method: 'POST', body: formData });
+                const data = await response.json();
+
+                if (response.status !== 200) {
+                    uploadStatus.innerHTML = `<span style="color: orange;">❌ Detection Failed: ${data.error || 'Server error.'}</span>`;
+                } else {
+                    let isFake = data.result.includes('FAKE');
+                    let color = isFake ? 'orange' : 'green';
+                    let emoji = isFake ? '🚨' : '✅';
+
+                    uploadStatus.innerHTML = `
+                        <div style="margin-top:20px; padding:15px; border-radius:8px; border:2px solid ${color};">
+                            ${emoji} Result for <strong>${data.filename}</strong>: 
+                            <span style="color:${color}; font-weight:bold;">${data.result}</span>
+                            <br>Accuracy: ${data.accuracy}
+                        </div>
+                    `;
+                }
+
+            } catch (error) {
+                uploadStatus.innerHTML = `<span style="color:orange;">Network Error: Could not reach the server.</span>`;
+            } finally {
+                detectBtn.textContent = 'Start Detection';
+                detectBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,424 @@
+/* General Styling & Variables (Updated for much DARKER Blue Background) */
+:root {
+    --primary-color: #00bcd4; /* Cyan/Aqua Blue for Primary Accent */
+    --secondary-color: #bbbbbb; /* Light Gray for Secondary Text */
+    --accent-color: #4CAF50; /* Green for Alerts/Buttons */
+    /* Updated Dark Blue Variables */
+    --background-light: #151a3d; /* Very Dark, Desaturated Blue for Sections */
+    --background-dark: #090c24; /* Extremely Dark Blue, nearly black, for Body/Navbar/Card Base */
+    --text-color: #eeeeee; /* White/Light Text */
+    --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.5); /* Stronger shadows */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-dark); /* Extremely Dark Blue */
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--background-dark); /* Extremely Dark Blue Navbar */
+    box-shadow: var(--shadow-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #1f254b; /* Darker blue border */
+}
+
+.logo {
+    color: var(--primary-color);
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 25px;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
+    padding: 5px 0;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    display: block;
+    margin-top: 5px;
+    right: 0;
+    background: var(--primary-color);
+    transition: width 0.4s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+    left: 0;
+    background: var(--primary-color);
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Sections */
+.section {
+    padding: 100px 5%; 
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: var(--background-light); /* Dark Blue section background */
+}
+
+.section h2 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color: var(--primary-color);
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--accent-color);
+    border-radius: 5px;
+}
+
+/* Home Section */
+.home {
+    background-color: var(--background-dark); /* Extremely Dark Blue for Home */
+    min-height: 100vh;
+    padding-top: 80px; 
+}
+
+.home .content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    width: 100%;
+    text-align: left;
+}
+
+.home .text {
+    flex: 1;
+    max-width: 50%;
+}
+
+.home .text h1 {
+    font-size: 3.5em;
+    margin-bottom: 15px;
+    color: var(--text-color); /* Light color for header */
+}
+
+.home .text p {
+    font-size: 1.2em;
+    color: var(--secondary-color);
+    margin-bottom: 30px;
+}
+
+.home .image {
+    flex: 1;
+    max-width: 50%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.home .image img {
+    max-width: 90%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: var(--shadow-light);
+}
+
+#detectBtn {
+    padding: 12px 30px;
+    font-size: 1.1em;
+    background-color: var(--primary-color); /* Use primary color for main button */
+    color: var(--background-dark); /* Text color to contrast with primary */
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    font-weight: bold;
+}
+
+#detectBtn:hover {
+    background-color: #00a0b2; /* Slightly darker primary */
+    transform: translateY(-2px);
+}
+
+#detectBtn:disabled {
+    background-color: #007bff50;
+    cursor: not-allowed;
+    color: var(--secondary-color);
+}
+
+/* About Section */
+.about {
+    background-color: var(--background-light);
+}
+
+.about .features {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    width: 100%;
+    max-width: 1000px;
+    margin-top: 20px;
+}
+
+.about .card {
+    background-color: #1a2353; /* Darker blue for card background */
+    color: white;
+    padding: 25px;
+    border-radius: 10px;
+    flex: 1;
+    min-width: 250px;
+    box-shadow: var(--shadow-light);
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    border: 1px solid #283088;
+}
+
+.about .card:hover {
+    background-color: #21288b;
+    transform: translateY(-5px);
+}
+
+/* Detection Section */
+.detection {
+    background-color: var(--background-dark);
+}
+
+.drop-area {
+    border: 3px dashed var(--primary-color);
+    padding: 50px;
+    width: 100%;
+    max-width: 600px;
+    margin: 30px auto;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    text-align: center;
+    background-color: var(--background-light); /* Dark blue background for drop area */
+}
+
+.drop-area p {
+    font-size: 1.2em;
+    color: var(--secondary-color);
+    margin: 0;
+}
+
+.drop-area:hover,
+.drop-area.active {
+    background-color: #263290;
+    border-color: var(--accent-color);
+}
+
+#uploadStatus {
+    margin-top: 20px;
+    font-size: 1.1em;
+    min-height: 50px;
+    color: var(--text-color);
+}
+
+/* Blog Section */
+.blog {
+    background-color: var(--background-light);
+}
+
+.blog-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.blog-card {
+    background-color: var(--background-dark); /* Extremely dark blue card background */
+    border-radius: 10px;
+    box-shadow: var(--shadow-light);
+    overflow: hidden;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #283088;
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.blog-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.blog-card h3 {
+    padding: 15px 15px 5px;
+    font-size: 1.3em;
+    color: var(--primary-color);
+}
+
+.blog-card p {
+    padding: 0 15px 15px;
+    color: var(--secondary-color);
+    font-size: 0.95em;
+}
+
+.blog-card a {
+    display: inline-block;
+    padding: 0 15px 15px;
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+/* Team Section */
+.team {
+    background-color: var(--background-dark);
+}
+
+.team-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1200px;
+    margin-top: 30px;
+}
+
+.member {
+    text-align: center;
+    max-width: 150px;
+}
+
+.member img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid var(--primary-color);
+    box-shadow: var(--shadow-light);
+    transition: border-color 0.3s ease;
+}
+
+.member:hover img {
+    border-color: var(--accent-color);
+}
+
+.member h3 {
+    margin-top: 15px;
+    font-size: 1.1em;
+    color: var(--text-color);
+}
+
+/* Footer */
+.pro-footer {
+    background-color: #000000; /* Pure black footer to maintain high contrast */
+    color: #999;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9em;
+}
+
+.pro-footer p {
+    margin: 5px 0;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 992px) {
+    .home .content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .home .text,
+    .home .image {
+        max-width: 100%;
+        margin-bottom: 40px;
+    }
+
+    .home .image img {
+        max-width: 70%;
+    }
+
+    .about .features {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 5%;
+    }
+
+    .nav-links {
+        margin-top: 10px;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-links li {
+        margin: 5px 0;
+    }
+
+    .section {
+        padding: 80px 5%;
+    }
+
+    .home .text h1 {
+        font-size: 2.5em;
+    }
+
+    .blog-container {
+        grid-template-columns: 1fr;
+    }
+}
